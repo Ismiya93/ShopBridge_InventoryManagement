@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ShopBridge_InventoryManagement.Models.Products>
+
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="jumbotron">
+    <p>@Html.ActionLink("Create", "Create", "Product")</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.Price)</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Product", new { id = @item.ID }) | 
+                        @Html.ActionLink("Details", "Details", "Product", new { id = @item.ID }) | 
+                        @Html.ActionLink("Delete", "Delete", "Product", new { id = @item.ID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
